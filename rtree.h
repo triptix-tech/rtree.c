@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // rtree_new returns a new rtree
 //
 // Returns NULL if the system is out of memory.
@@ -101,5 +105,9 @@ bool rtree_delete_with_comparator(struct rtree *tr, const double *min,
 // loads. This may increase performance for single-threaded programs.
 // Optionally, define RTREE_NOATOMICS to disbale all atomics.
 void rtree_opt_relaxed_atomics(struct rtree *tr);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // RTREE_H
