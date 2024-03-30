@@ -829,7 +829,7 @@ bool rtree_delete_with_comparator(struct rtree *tr, const NUMTYPE *min,
 
 struct rtree *rtree_clone(struct rtree *tr) {
     if (!tr) return NULL;
-    struct rtree *tr2 = tr->malloc(sizeof(struct rtree));
+    struct rtree *tr2 = (struct rtree *) tr->malloc(sizeof(struct rtree));
     if (!tr2) return NULL;
     memcpy(tr2, tr, sizeof(struct rtree));
     if (tr2->root) rc_fetch_add(&tr2->root->rc, 1);
